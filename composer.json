@@ -1,6 +1,7 @@
 {
     "name": "omisteck/peek",
     "description": "Peek is a laravel package that allows you to peek into your application's.",
+    "version": "0.0.1",
     "keywords": [
         "peek",
         "laravel",
