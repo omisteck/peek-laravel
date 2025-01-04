@@ -76,7 +76,7 @@ class Client
         if (! $this->serverIsAvailable()) {
             return;
         }
-        // dd($request->toArray());
+
         $curlHandle = $this->getCurlHandleForUrl('get', '');
 
         $curlError = null;
