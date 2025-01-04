@@ -47,7 +47,6 @@ class PayloadFactory
             }
         }
 
-
         if (is_bool($value)) {
             return new BoolPayload($value);
         }

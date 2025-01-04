@@ -2,13 +2,12 @@
 
 namespace Tests\Settings;
 
-use PHPUnit\Framework\TestCase;
 use Omisteck\Peek\Settings\Settings;
-use Omisteck\Peek\Settings\SettingsFactory;
+use PHPUnit\Framework\TestCase;
 
 class SettingsTest extends TestCase
 {
-    public function testCreateWithDefaultSettings()
+    public function test_create_with_default_settings()
     {
         $settings = new Settings([]);
 
@@ -20,7 +19,7 @@ class SettingsTest extends TestCase
         $this->assertFalse($settings->always_send_raw_values);
     }
 
-    public function testCreateWithCustomSettings()
+    public function test_create_with_custom_settings()
     {
         $settings = new Settings([
             'enable' => false,
@@ -33,7 +32,7 @@ class SettingsTest extends TestCase
         $this->assertEquals(44315, $settings->port);
     }
 
-    public function testDynamicPropertyAccess()
+    public function test_dynamic_property_access()
     {
         $settings = new Settings([]);
 

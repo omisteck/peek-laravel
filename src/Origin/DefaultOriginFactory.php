@@ -62,7 +62,7 @@ class DefaultOriginFactory implements OriginFactory
 
         // Look at frames after the peek() call to find the actual caller
         for ($i = $peekIndex + 1; $i < count($frames); $i++) {
-            if (!isset($frames[$i]['file'])) {
+            if (! isset($frames[$i]['file'])) {
                 continue;
             }
 

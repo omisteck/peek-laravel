@@ -30,7 +30,6 @@ class ApplicationLogWatcher extends Watcher
             /** @var Peek $peek */
             $peek = app(Peek::class);
 
-
             switch ($message->level) {
                 case 'error':
                 case 'critical':

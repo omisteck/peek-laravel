@@ -44,7 +44,6 @@ class LoggedMailPayload extends Payload
 
         $content = self::getMailContent($loggedMail, $message);
 
-
         // Extract variables from custom headers
         $variables = [];
         if ($varsHeader = $message->getHeader('X-Mail-Variables')) {
@@ -60,7 +59,6 @@ class LoggedMailPayload extends Payload
         if ($templateHeader = $message->getHeader('X-Laravel-Template')) {
             $templateName = $templateHeader->getValue();
         }
-
 
         return new self(
             $content,

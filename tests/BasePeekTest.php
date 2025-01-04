@@ -2,19 +2,21 @@
 
 namespace Omisteck\Peek\Tests;
 
-use PHPUnit\Framework\TestCase;
+use Exception;
+use Mockery;
 use Omisteck\Peek\BasePeek;
 use Omisteck\Peek\Client;
 use Omisteck\Peek\Settings\Settings;
 use Omisteck\Peek\Settings\SettingsFactory;
 use Omisteck\Peek\Support\RateLimiter;
-use Exception;
-use Mockery;
+use PHPUnit\Framework\TestCase;
 
 class BasePeekTest extends TestCase
 {
     protected BasePeek $peek;
+
     protected Settings $settings;
+
     protected $client;
 
     protected function setUp(): void
@@ -45,28 +47,28 @@ class BasePeekTest extends TestCase
         parent::tearDown();
     }
 
-    public function testBasicSend()
+    public function test_basic_send()
     {
         $this->client->shouldReceive('send')->once();
         $result = $this->peek->send('test');
         $this->assertSame($this->peek, $result);
     }
 
-    public function testSendWithMultipleArguments()
+    public function test_send_with_multiple_arguments()
     {
         $this->client->shouldReceive('send')->once();
         $result = $this->peek->send('test1', 'test2', ['test3']);
         $this->assertSame($this->peek, $result);
     }
 
-    public function testRawSend()
+    public function test_raw_send()
     {
         $this->client->shouldReceive('send')->once();
         $result = $this->peek->raw('test');
         $this->assertSame($this->peek, $result);
     }
 
-    public function testJsonOperations()
+    public function test_json_operations()
     {
         $this->client->shouldReceive('send')->times(2);
 
@@ -75,7 +77,7 @@ class BasePeekTest extends TestCase
         $this->peek->json(json_encode($data));
     }
 
-    public function testHtmlAndUrl()
+    public function test_html_and_url()
     {
         $this->client->shouldReceive('send')->times(2);
 
@@ -83,7 +85,7 @@ class BasePeekTest extends TestCase
         $this->peek->url('example.com', 'Example');
     }
 
-    public function testMeasure()
+    public function test_measure()
     {
         $this->client->shouldReceive('send')->times(2);
 
@@ -93,7 +95,7 @@ class BasePeekTest extends TestCase
         });
     }
 
-    public function testExceptionHandling()
+    public function test_exception_handling()
     {
         $this->client->shouldReceive('send')->once();
 
@@ -101,7 +103,7 @@ class BasePeekTest extends TestCase
         $this->peek->exception($exception);
     }
 
-    public function testEnableDisable()
+    public function test_enable_disable()
     {
         $this->assertTrue($this->peek->enabled());
 

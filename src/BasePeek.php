@@ -3,45 +3,45 @@
 namespace Omisteck\Peek;
 
 use Closure;
-use Exception;
-use Throwable;
-use TypeError;
-use Ramsey\Uuid\Uuid;
-use Illuminate\Support\Str;
 use Composer\InstalledVersions;
-use Omisteck\Peek\Support\Counters;
-use Omisteck\Peek\Support\Limiters;
-use Omisteck\Peek\Settings\Settings;
+use Exception;
+use Illuminate\Support\Str;
 use Omisteck\Peek\Concerns\PeekStatus;
-use Omisteck\Peek\Payloads\LogPayload;
-use Omisteck\Peek\Support\RateLimiter;
-use Omisteck\Peek\Payloads\HtmlPayload;
-use Omisteck\Peek\Support\IgnoredValue;
-use Omisteck\Peek\Payloads\ImagePayload;
-use Omisteck\Peek\Payloads\LabelPayload;
-use Omisteck\Peek\Payloads\TablePayload;
-use Omisteck\Peek\Payloads\TracePayload;
 use Omisteck\Peek\Payloads\CallerPayload;
-use Omisteck\Peek\Payloads\CustomPayload;
-use Omisteck\Peek\Payloads\NotifyPayload;
-use Omisteck\Peek\Payloads\MeasurePayload;
-use Omisteck\Peek\Payloads\PhpInfoPayload;
-use Omisteck\Peek\Payloads\ShowAppPayload;
-use Symfony\Component\Stopwatch\Stopwatch;
 use Omisteck\Peek\Payloads\ClearAllPayload;
 use Omisteck\Peek\Payloads\ConfettiPayload;
-use Omisteck\Peek\Support\ExceptionHandler;
-use Omisteck\Peek\Payloads\ExceptionPayload;
-use Omisteck\Peek\Payloads\NewScreenPayload;
 use Omisteck\Peek\Payloads\CreateLockPayload;
-use Omisteck\Peek\Payloads\JsonStringPayload;
+use Omisteck\Peek\Payloads\CustomPayload;
 use Omisteck\Peek\Payloads\DecodedJsonPayload;
+use Omisteck\Peek\Payloads\ExceptionPayload;
 use Omisteck\Peek\Payloads\FileContentsPayload;
-
+use Omisteck\Peek\Payloads\HtmlPayload;
+use Omisteck\Peek\Payloads\ImagePayload;
+use Omisteck\Peek\Payloads\JsonStringPayload;
+use Omisteck\Peek\Payloads\LabelPayload;
+use Omisteck\Peek\Payloads\LogPayload;
+use Omisteck\Peek\Payloads\MeasurePayload;
+use Omisteck\Peek\Payloads\NewScreenPayload;
+use Omisteck\Peek\Payloads\NotifyPayload;
+use Omisteck\Peek\Payloads\PhpInfoPayload;
+use Omisteck\Peek\Payloads\ShowAppPayload;
+use Omisteck\Peek\Payloads\TablePayload;
+use Omisteck\Peek\Payloads\TracePayload;
+use Omisteck\Peek\Settings\Settings;
+use Omisteck\Peek\Support\Counters;
+use Omisteck\Peek\Support\ExceptionHandler;
+use Omisteck\Peek\Support\IgnoredValue;
+use Omisteck\Peek\Support\Limiters;
+use Omisteck\Peek\Support\RateLimiter;
+use Ramsey\Uuid\Uuid;
+use Symfony\Component\Stopwatch\Stopwatch;
+use Throwable;
+use TypeError;
 
 class BasePeek
 {
     use PeekStatus;
+
     /** @var \Omisteck\Peek\Settings\Settings */
     public $settings;
 
@@ -85,7 +85,6 @@ class BasePeek
     public static $beforeSendRequest = null;
 
     public $status;
-
 
     public function __construct(Settings $settings, ?Client $client = null, ?string $uuid = null)
     {
@@ -590,7 +589,6 @@ class BasePeek
         } catch (Exception $e) {
         }
 
-
         if (
             self::rateLimiter()->isMaxReached() ||
             self::rateLimiter()->isMaxPerSecondReached()
@@ -631,7 +629,6 @@ class BasePeek
 
         return $this;
     }
-
 
     // public static function makePathOsSafe(string $path): string
     // {

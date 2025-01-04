@@ -21,14 +21,13 @@ abstract class Payload
     /** @var string|null */
     public $status = null;
 
-
     public function replaceRemotePathWithLocalPath(string $filePath): string
     {
         if (is_null($this->remotePath) || is_null($this->localPath)) {
             return $filePath;
         }
 
-        $pattern = '~^' . preg_quote($this->remotePath, '~') . '~';
+        $pattern = '~^'.preg_quote($this->remotePath, '~').'~';
 
         return preg_replace($pattern, $this->localPath, $filePath);
     }
