@@ -21,7 +21,7 @@
         "ramsey/uuid": "*",
         "spatie/laravel-package-tools": "^1.16",
         "symfony/stopwatch": "*",
-        "zbateson/mail-mime-parser": "^2.4"
+        "zbateson/mail-mime-parser": "^3.0"
     },
     "require-dev": {
         "illuminate/support": "*",
