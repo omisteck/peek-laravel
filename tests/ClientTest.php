@@ -2,10 +2,10 @@
 
 namespace Omisteck\Peek\Tests;
 
-use PHPUnit\Framework\TestCase;
+use Mockery;
 use Omisteck\Peek\Client;
 use Omisteck\Peek\Request;
-use Mockery;
+use PHPUnit\Framework\TestCase;
 
 class ClientTest extends TestCase
 {
@@ -23,13 +23,13 @@ class ClientTest extends TestCase
         parent::tearDown();
     }
 
-    public function testServerAvailabilityCheck()
+    public function test_server_availability_check()
     {
         $result = $this->client->serverIsAvailable();
         $this->assertIsBool($result);
     }
 
-    public function testSendRequest()
+    public function test_send_request()
     {
         $request = Mockery::mock(Request::class);
         $request->shouldReceive('toJson')->andReturn(json_encode(['test' => 'data']));

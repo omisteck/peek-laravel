@@ -2,26 +2,26 @@
 
 namespace Omisteck\Peek;
 
+use Omisteck\Peek\Commands\PublishConfigCommand;
 use Omisteck\Peek\Settings\Settings;
-use Omisteck\Peek\Watchers\JobWatcher;
-use Omisteck\Peek\Watchers\DumpWatcher;
-use Omisteck\Peek\Watchers\ViewWatcher;
-use Spatie\LaravelPackageTools\Package;
+use Omisteck\Peek\Settings\SettingsFactory;
+use Omisteck\Peek\Watchers\ApplicationLogWatcher;
 use Omisteck\Peek\Watchers\CacheWatcher;
+use Omisteck\Peek\Watchers\DeprecatedNoticeWatcher;
+use Omisteck\Peek\Watchers\DumpWatcher;
+use Omisteck\Peek\Watchers\DuplicateQueryWatcher;
 use Omisteck\Peek\Watchers\EventWatcher;
+use Omisteck\Peek\Watchers\ExceptionWatcher;
+use Omisteck\Peek\Watchers\HttpClientWatcher;
+use Omisteck\Peek\Watchers\JobWatcher;
+use Omisteck\Peek\Watchers\LoggedMailWatcher;
 use Omisteck\Peek\Watchers\QueryWatcher;
 use Omisteck\Peek\Watchers\RequestWatcher;
-use Omisteck\Peek\Settings\SettingsFactory;
-use Omisteck\Peek\Watchers\ExceptionWatcher;
 use Omisteck\Peek\Watchers\SlowQueryWatcher;
-use Omisteck\Peek\Watchers\HttpClientWatcher;
-use Omisteck\Peek\Watchers\LoggedMailWatcher;
-use Omisteck\Peek\Commands\PublishConfigCommand;
-use Omisteck\Peek\Watchers\ApplicationLogWatcher;
-use Omisteck\Peek\Watchers\DuplicateQueryWatcher;
-use Omisteck\Peek\Watchers\DeprecatedNoticeWatcher;
-use Spatie\LaravelPackageTools\PackageServiceProvider;
+use Omisteck\Peek\Watchers\ViewWatcher;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
+use Spatie\LaravelPackageTools\Package;
+use Spatie\LaravelPackageTools\PackageServiceProvider;
 
 class PeekServiceProvider extends PackageServiceProvider
 {
@@ -55,9 +55,9 @@ class PeekServiceProvider extends PackageServiceProvider
     protected function registerCommands(): self
     {
         $this->commands(PublishConfigCommand::class);
+
         return $this;
     }
-
 
     protected function registerSettings(): self
     {

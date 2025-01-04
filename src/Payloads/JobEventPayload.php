@@ -29,14 +29,12 @@ class JobEventPayload extends Payload
             ? unserialize($event->job->payload()['data']['command'])
             : $this->job = $event->job;
 
-
         if (property_exists($event, 'payload')) {
             $job_details = json_decode($event->payload);
             $this->job_details = $job_details;
             $this->job_details->name = class_basename($job_details?->displayName);
             $this->job_details->data = unserialize($job_details?->data?->command);
         }
-
 
         if (property_exists($event, 'exception')) {
             $this->exception = $event->exception ?? null;

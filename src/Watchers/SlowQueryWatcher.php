@@ -2,11 +2,11 @@
 
 namespace Omisteck\Peek\Watchers;
 
+use Illuminate\Database\Events\QueryExecuted;
+use Illuminate\Support\Facades\Event;
+use Omisteck\Peek\Payloads\ExecutedSlowQueryPayload;
 use Omisteck\Peek\Peek;
 use Omisteck\Peek\Settings\Settings;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Database\Events\QueryExecuted;
-use Omisteck\Peek\Payloads\ExecutedSlowQueryPayload;
 
 class SlowQueryWatcher extends QueryWatcher
 {

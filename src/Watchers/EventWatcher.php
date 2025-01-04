@@ -14,7 +14,6 @@ class EventWatcher extends Watcher
         $peek = app(Peek::class);
         $this->enabled = $peek->settings->send_events_to_peek;
 
-
         Event::listen('*', function (string $eventName, array $arguments) {
             if (! $this->enabled()) {
                 return;

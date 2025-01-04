@@ -2,12 +2,12 @@
 
 namespace Tests\Settings;
 
-use PHPUnit\Framework\TestCase;
 use Omisteck\Peek\Settings\SettingsFactory;
+use PHPUnit\Framework\TestCase;
 
 class SettingsFactoryTest extends TestCase
 {
-    public function testCreateFromArray()
+    public function test_create_from_array()
     {
         $settings = SettingsFactory::createFromArray([
             'enable' => false,
@@ -18,7 +18,7 @@ class SettingsFactoryTest extends TestCase
         $this->assertEquals('127.0.0.1', $settings->host);
     }
 
-    public function testCreateFromConfigFile()
+    public function test_create_from_config_file()
     {
         // Create a temporary config file
         $configContent = <<<'PHP'

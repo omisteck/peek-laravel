@@ -22,7 +22,7 @@ class CallerPayload extends Payload
         $frames = [];
         if (is_array($this->frames)) {
             $frames = array_map(function ($frame) {
-                return  [
+                return [
                     'file' => $frame['file'] ?? null,
                     'line' => $frame['line'] ?? null,
                     'class' => $frame['class'] ?? null,
@@ -43,9 +43,6 @@ class CallerPayload extends Payload
                     : ($caller['file'] ?? null),
             ];
         }
-
-
-
 
         return $frames;
     }

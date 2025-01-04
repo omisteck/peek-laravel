@@ -14,13 +14,13 @@ class PublishConfigCommand extends Command
 
     public function handle()
     {
-        if ((new Filesystem())->exists('config/peek.php')) {
+        if ((new Filesystem)->exists('config/peek.php')) {
             $this->error('peek.php already exists in the project root');
 
             return;
         }
 
-        copy(__DIR__ . '/../../config/peek.php', base_path('config/peek.php'));
+        copy(__DIR__.'/../../config/peek.php', base_path('config/peek.php'));
 
         if ($this->option('docker')) {
             file_put_contents(

@@ -30,7 +30,6 @@ class LogPayload extends Payload
                 $values = (string) $values;
             }
 
-            $values;
         }
 
         $this->meta = [
