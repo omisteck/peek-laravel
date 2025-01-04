@@ -1,29 +1,34 @@
 {
-    "name": ":vendor_slug/:package_slug",
-    "description": ":package_description",
+    "name": "omisteck/peek",
+    "description": "Peek is a laravel package that allows you to peek into your application's.",
     "keywords": [
-        ":vendor_name",
+        "peek",
         "laravel",
-        ":package_slug"
+        "omisteck"
     ],
-    "homepage": "https://github.com/:vendor_slug/:package_slug",
+    "homepage": "https://github.com/omisteck/peek",
     "license": "MIT",
     "authors": [
         {
-            "name": ":author_name",
-            "email": "author@domain.com",
+            "name": "Rasheed Omiwale",
+            "email": "rasheedomiwale@gmail.com",
             "role": "Developer"
         }
     ],
     "require": {
-        "php": "^8.4",
+        "php": "^8.1",
+        "illuminate/contracts": "^10.0||^11.0",
+        "ramsey/uuid": "*",
         "spatie/laravel-package-tools": "^1.16",
-        "illuminate/contracts": "^10.0||^11.0"
+        "symfony/stopwatch": "*",
+        "zbateson/mail-mime-parser": "^2.4"
     },
     "require-dev": {
-        "laravel/pint": "^1.14",
-        "nunomaduro/collision": "^8.1.1||^7.10.0",
+        "illuminate/support": "*",
         "larastan/larastan": "^2.9",
+        "laravel/pint": "^1.14",
+        "mockery/mockery": "^1.6",
+        "nunomaduro/collision": "^8.1.1||^7.10.0",
         "orchestra/testbench": "^9.0.0||^8.22.0",
         "pestphp/pest": "^3.0",
         "pestphp/pest-plugin-arch": "^3.0",
@@ -31,22 +36,28 @@
         "phpstan/extension-installer": "^1.3",
         "phpstan/phpstan-deprecation-rules": "^1.1",
         "phpstan/phpstan-phpunit": "^1.3",
-        "spatie/laravel-ray": "^1.35"
+        "phpunit/phpunit": "^11.5"
     },
     "autoload": {
         "psr-4": {
-            "VendorName\\Skeleton\\": "src/",
-            "VendorName\\Skeleton\\Database\\Factories\\": "database/factories/"
-        }
+            "Omisteck\\Peek\\": "src/",
+            "Omisteck\\Peek\\Database\\Factories\\": "database/factories/"
+        },
+        "files": [
+            "src/helpers.php"
+        ]
     },
     "autoload-dev": {
         "psr-4": {
-            "VendorName\\Skeleton\\Tests\\": "tests/",
+            "Omisteck\\Peek\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
     "scripts": {
-        "post-autoload-dump": "@composer run prepare",
+        "post-autoload-dump": [
+            "@composer run prepare",
+            "@php artisan vendor:publish --provider=\"Omisteck\\Peek\\PeekServiceProvider\" --tag=peek-config --force"
+        ],
         "prepare": "@php vendor/bin/testbench package:discover --ansi",
         "analyse": "vendor/bin/phpstan analyse",
         "test": "vendor/bin/pest",
@@ -63,10 +74,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "VendorName\\Skeleton\\SkeletonServiceProvider"
+                "Omisteck\\Peek\\PeekServiceProvider"
             ],
             "aliases": {
-                "Skeleton": "VendorName\\Skeleton\\Facades\\Skeleton"
+                "Peek": "Omisteck\\Peek\\Facades\\Peek"
             }
         }
     },
